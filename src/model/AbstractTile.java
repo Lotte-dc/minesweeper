@@ -6,6 +6,7 @@ import test.TestableTile;
 public abstract class AbstractTile implements TestableTile {
     protected ITileStateNotifier viewNotifier;
     public abstract boolean open();
+    public abstract void setExplosive();
     public abstract void flag();
     public abstract void unflag();
     public abstract boolean isFlagged();

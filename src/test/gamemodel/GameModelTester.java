@@ -8,6 +8,9 @@ import static org.junit.Assert.assertTrue;
 import java.time.Duration;
 import java.util.ArrayDeque;
 import java.util.Deque;
+import java.util.*;
+
+import model.Minesweeper;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -17,6 +20,7 @@ import notifier.IGameStateNotifier;
 import notifier.ITileStateNotifier;
 import test.TestableMinesweeper;
 import test.TestableTile;
+import model.Minesweeper;
 
 public class GameModelTester {
     private static final int X=0, Y=1;
@@ -25,9 +29,10 @@ public class GameModelTester {
     @Before
     public void init() {
         //uncomment the line below once your game model code is ready for testing
-        //gameModel = new Minesweeper();
+        gameModel = new Minesweeper();
     }
 
+    //works
     @Test
     public void testGeneratingEmptyTile() {
         TestableTile tile = gameModel.generateEmptyTile();
@@ -43,6 +48,7 @@ public class GameModelTester {
         tile.open();
     }
 
+    //works
     @Test 
     public void testGeneratingExplosiveTile() {
         TestableTile tile = gameModel.generateEmptyTile();
@@ -58,7 +64,7 @@ public class GameModelTester {
         tile.open();
     }
 
-
+    //works
     @Test 
     public void testInitializingNewGame() {
         final int h = 5, w=3, totalExplosion = 4;
@@ -74,7 +80,6 @@ public class GameModelTester {
         assertEquals(gameModel.getHeight(), h);
         assertEquals(gameModel.getWidth(), w);
         int explosionCount = 0;
-
         assertThrows(Exception.class, () -> {
             for (int i=0; i<h; ++i)
                 for (int j=0; j<w; ++j) 
@@ -126,6 +131,7 @@ public class GameModelTester {
         for (int i=0; i<row; ++i)
             for (int j=0; j<col; ++j)
                 assertEquals(gameModel.getTile(j, i), world[i][j]);
+                System.out.println("Hi!");
     }
 
     @Test
@@ -238,6 +244,7 @@ public class GameModelTester {
                 assertEquals(col, size);
                 super.setInvoked();
             }
+            //System.out.println('Hi!');
 
             @Override
             public void notifyFlagCountChanged(int newFlagCount) {
